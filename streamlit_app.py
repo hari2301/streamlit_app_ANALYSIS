@@ -140,9 +140,9 @@ st.write('On the month of `march 2021` high deaths', int(cases_per_month.new_dea
 
 #q10 chart
 st.header('**_Q10 : How many positive cases were reported on india per month in 2020?_**')
+year_20 = india_df.loc[india_df.year == 2020]
+cases_per_month_20 = year_20.groupby('month')[['new_cases','new_deaths','total_cases','total_deaths','total_tests']].sum()
 if st.checkbox('View cases graph', value=False):
-	year_20 = india_df.loc[india_df.year == 2020]
-	cases_per_month_20 = year_20.groupby('month')[['new_cases','new_deaths','total_cases','total_deaths','total_tests']].sum()
 	fig8 = plt.figure()
 	sns.barplot(cases_per_month_20.index, cases_per_month_20.new_cases)
 	plt.title('Positive cases per month in the year of 2020')
@@ -151,9 +151,9 @@ st.write('There were',int(cases_per_month_20.new_cases.max()),'cases reported in
 
 #q11 chart
 st.header('**_Q11 : How many deaths were reported on india per month in 2020?_**')
+year_20 = india_df.loc[india_df.year == 2020]
+cases_per_month_20 = year_20.groupby('month')[['new_cases','new_deaths','total_cases','total_deaths','total_tests']].sum()
 if st.checkbox('View deaths graph', value=False):
-	year_20 = india_df.loc[india_df.year == 2020]
-	cases_per_month_20 = year_20.groupby('month')[['new_cases','new_deaths','total_cases','total_deaths','total_tests']].sum()
 	fig9=plt.figure()
 	sns.barplot(cases_per_month_20.index, cases_per_month_20.new_deaths)
 	plt.title('Deaths per month in the year of 2020')
