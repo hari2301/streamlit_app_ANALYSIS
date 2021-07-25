@@ -75,7 +75,7 @@ st.write('The first death of the covid was caused in',first_death)
 #q5 chart
 st.header('**_Q5 : How did the new_cases and new_deaths evolved in india?_**')
 
-if st.checkbox("Plotly Curve",value=FalseFalse):
+if st.checkbox("Plotly Curve",value=False):
 	fig3 = px.line(india_df, 
        		 x = 'date',
        		 y = 'new_cases')
