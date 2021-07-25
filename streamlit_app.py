@@ -42,14 +42,14 @@ india_df = inr_df[['date',
 
 #q1 chart
 st.header('**_Q1. Timeline for the total_case and total_death_**')
-if st.checkbox('View total_case Graph', value=True):
+if st.checkbox('View total_case Graph', value=False):
 	fig1 = px.line(india_df,
         x = india_df.date,
         y = 'total_cases',
         title = 'Timeline of total cases')
 	st.plotly_chart(fig1)
 
-if st.checkbox('View total_deaths Graph', value=True):
+if st.checkbox('View total_deaths Graph', value=False):
 	fig2 = px.line(india_df,
         x = india_df.date,
         y = 'total_deaths',
@@ -75,7 +75,7 @@ st.write('The first death of the covid was caused in',first_death)
 #q5 chart
 st.header('**_Q5 : How did the new_cases and new_deaths evolved in india?_**')
 
-if st.checkbox("Plotly Curve",value=True):
+if st.checkbox("Plotly Curve",value=FalseFalse):
 	fig3 = px.line(india_df, 
        		 x = 'date',
        		 y = 'new_cases')
@@ -93,7 +93,7 @@ st.header('**_Q6 : On which date the highest covid case was reported?_**')
 st.write('Lets create a dataframe to plot the graph, by taking 350k cases as the threshold point')
 high_case_df = india_df[india_df.new_cases > 350000]
 high_case_df.sort_values('new_cases',ascending = False)
-if st.checkbox("View high case date graph",value=True):	
+if st.checkbox("View high case date graph",value=False):	
 	fig4 = plt.figure(figsize=(25,10))
 	sns.barplot(high_case_df.date, high_case_df.new_cases)
 	plt.title('High cases by the date')
@@ -103,7 +103,7 @@ if st.checkbox("View high case date graph",value=True):
 #q7 chart 
 st.header('**_Q7 : On which date the highest covid deaths was reported?_**')
 high_death_df = india_df[india_df.new_deaths > 500].sort_values('new_cases',ascending=False)
-if st.checkbox('View high death date graph',value=True):
+if st.checkbox('View high death date graph',value=False):
 	fig5 = plt.figure(figsize=(25,10))
 	sns.barplot(high_death_df.date.head(10), high_death_df.new_deaths.head(10))
 	plt.title('High deaths by day')
@@ -121,7 +121,7 @@ india_df['year'] = pd.DatetimeIndex(india_df.date).year
 year_21 = india_df.loc[india_df.year == 2021]
 cases_per_month = year_21.groupby('month')[['new_cases','new_deaths','total_cases','total_deaths','total_tests']].sum()
 
-if st.checkbox('View cases per month Graph',value=True):
+if st.checkbox('View cases per month Graph',value=False):
 	fig6 = plt.figure()
 	sns.barplot(cases_per_month.index, cases_per_month.new_cases)
 	plt.title('Positive cases per month in the year of 2021')
@@ -131,7 +131,7 @@ st.write('On the month of `march 2021` high positive cases', int(cases_per_month
 
 #q9 chart
 st.header('**_Q9 : How many deaths were reported on india per month in 2021?_**')
-if st.checkbox('View deaths per month Graph',value=True):
+if st.checkbox('View deaths per month Graph',value=False):
 	fig7 = plt.figure()
 	sns.barplot(cases_per_month.index, cases_per_month.new_deaths)
 	plt.title('Deaths per month in the year of 2021')
@@ -140,7 +140,7 @@ st.write('On the month of `march 2021` high deaths', int(cases_per_month.new_dea
 
 #q10 chart
 st.header('**_Q10 : How many positive cases were reported on india per month in 2020?_**')
-if st.checkbox('View cases graph', value=True):
+if st.checkbox('View cases graph', value=False):
 	year_20 = india_df.loc[india_df.year == 2020]
 	cases_per_month_20 = year_20.groupby('month')[['new_cases','new_deaths','total_cases','total_deaths','total_tests']].sum()
 	fig8 = plt.figure()
@@ -151,7 +151,7 @@ st.write('There were',int(cases_per_month_20.new_cases.max()),'cases reported in
 
 #q11 chart
 st.header('**_Q11 : How many deaths were reported on india per month in 2020?_**')
-if st.checkbox('View deaths graph', value=True):
+if st.checkbox('View deaths graph', value=False):
 	year_20 = india_df.loc[india_df.year == 2020]
 	cases_per_month_20 = year_20.groupby('month')[['new_cases','new_deaths','total_cases','total_deaths','total_tests']].sum()
 	fig9=plt.figure()
@@ -160,6 +160,7 @@ if st.checkbox('View deaths graph', value=True):
 	st.pyplot(fig9)
 st.write('There were',int(cases_per_month_20.new_deaths.max()),'deaths reported in india on 2020')
 
+st.write('The below code will be executed soon')
 '''
 #q12 chart
 st.header('**_Q12 : How many tests were taken in india on 2020 and 2021?_**')
